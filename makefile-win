@@ -1,0 +1,46 @@
+# Project: utilsdev
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o utils/memutils.o utils/strutils.o argslist.o config/configdata.o stream/bufstream.o stream/filestream.o
+LINKOBJ  = main.o utils/memutils.o utils/strutils.o argslist.o config/configdata.o stream/bufstream.o stream/filestream.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+BIN      = utilsdev.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+utils/memutils.o: utils/memutils.cpp
+	$(CPP) -c utils/memutils.cpp -o utils/memutils.o $(CXXFLAGS)
+
+utils/strutils.o: utils/strutils.cpp
+	$(CPP) -c utils/strutils.cpp -o utils/strutils.o $(CXXFLAGS)
+
+argslist.o: argslist.cpp
+	$(CPP) -c argslist.cpp -o argslist.o $(CXXFLAGS)
+
+config/configdata.o: config/configdata.cpp
+	$(CPP) -c config/configdata.cpp -o config/configdata.o $(CXXFLAGS)
+
+stream/bufstream.o: stream/bufstream.cpp
+	$(CPP) -c stream/bufstream.cpp -o stream/bufstream.o $(CXXFLAGS)
+
+stream/filestream.o: stream/filestream.cpp
+	$(CPP) -c stream/filestream.cpp -o stream/filestream.o $(CXXFLAGS)
